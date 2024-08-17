@@ -5,6 +5,7 @@ import { SearchMovieComponent } from './search-movie/search-movie.component';
 
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

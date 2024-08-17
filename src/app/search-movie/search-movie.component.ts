@@ -23,8 +23,8 @@ export class SearchMovieComponent {
   }
 
   identifiantOrTitreValidator(form: FormGroup) {
-    const identifiant = form.get('identifiant').value;
-    const titre = form.get('titre').value;
+    const identifiant = form.get('identifiant')?.value;
+    const titre = form.get('titre')?.value;
     return identifiant || titre ? null : { identifiantOrTitre: true };
   }
 
