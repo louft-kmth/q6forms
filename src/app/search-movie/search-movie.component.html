@@ -1,0 +1,41 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <label for="identifiant">Identifiant:</label>
+    <input id="identifiant" formControlName="identifiant" type="text">
+    <div *ngIf="searchForm.hasError('identifiantOrTitre') && searchForm.get('identifiant').touched">
+      L'un des deux champs 'Identifiant' ou 'Titre' doit être renseigné.
+    </div>
+  
+    <label for="titre">Titre:</label>
+    <input id="titre" formControlName="titre" type="text">
+    <div *ngIf="searchForm.hasError('identifiantOrTitre') && searchForm.get('titre').touched">
+      L'un des deux champs 'Identifiant' ou 'Titre' doit être renseigné.
+    </div>
+  
+    <label for="type">Type:</label>
+    <select id="type" formControlName="type">
+      <option value="film">Film</option>
+      <option value="serie">Série</option>
+      <option value="episode">Épisode</option>
+    </select>
+    <div *ngIf="searchForm.get('type').invalid && searchForm.get('type').touched">
+      Type est requis.
+    </div>
+  
+    <label for="anneeSortie">Année de sortie:</label>
+    <input id="anneeSortie" formControlName="anneeSortie" type="number">
+    <div *ngIf="searchForm.get('anneeSortie').invalid && searchForm.get('anneeSortie').touched">
+      L'année doit être comprise entre 1900 et {{ currentYear }}.
+    </div>
+  
+    <label for="fiche">Fiche:</label>
+    <select id="fiche" formControlName="fiche">
+      <option value="complete">Complète</option>
+      <option value="courte">Courte</option>
+    </select>
+    <div *ngIf="searchForm.get('fiche').invalid && searchForm.get('fiche').touched">
+      Fiche est requise.
+    </div>
+  
+    <button type="submit" [disabled]="searchForm.invalid">Submit</button>
+  </form>
+  
